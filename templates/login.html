@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+    <title> Log in </title>
+
+{% endblock %}
+
+{% block body %}
+
+   <form action="#" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" placeholder="Username" value='{{ value }}'>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="Password" value='{{ value }}'>
+        <br>
+        <input type="submit" value="Log in">
+    </form>
+
+{% endblock %}

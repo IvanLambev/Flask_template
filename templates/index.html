@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+    <title> Home page </title>
+
+{% endblock %}
+
+{% block body %}
+
+<a href={{ url_for('login') }}>Login page</a>
+<a href={{ url_for('register') }}>Registration page</a>
+<a href={{ url_for('logout') }}>Logout</a>
+<a href="{{ url_for('user', username=session['user']) }}">User</a>
+
+{% endblock %}
