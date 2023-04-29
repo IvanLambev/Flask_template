@@ -3,16 +3,17 @@
 {% block head %}
 
     <title> User Dashboard </title>
-
+    <link rel="stylesheet" href="/static/css/style_user.css">
 {% endblock %}
 
 {% block body %}
-
+<div class="container">
     <h1> User Dashboard </h1>
 
     <p> Welcome, {{ username }}! </p>
 
     <p> <a href="/logout"> Log Out </a> </p>
+</div>
 
 {% endblock %}
 ```

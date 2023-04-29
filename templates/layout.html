@@ -12,13 +12,11 @@
     </script>
   {% endif %}
 {% endwith %}
-
-{% block head %}{% endblock %}
-
-
-
-{% block body %}
+<html lang="en">
+<head>{% block head %}{% endblock %}</head>
 
 
 
-{% endblock %}
+<body id="main-body">{% block body %}{% endblock %}</body>
+
+</html>

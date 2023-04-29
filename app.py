@@ -54,7 +54,11 @@ def login():
 
         cur.execute("SELECT * FROM users WHERE username = %s ", (username,))
         passwords = cur.fetchone()
+        if passwords is None:
+            flash('Invalid username', 'danger')
+            return render_template('login.html')
         db_password1 = passwords[1]
+
         print("alo")
         print(bytes(db_password1).decode('utf-8'))
 
@@ -116,7 +120,7 @@ def register():
 
 
 @app.route('/user-<username>')
-def user():
+def user(username):
     if 'user' in session:
         return render_template('user.html', username=session['user'])
     else:
