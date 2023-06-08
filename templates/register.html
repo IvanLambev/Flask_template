@@ -1,39 +1,46 @@
 {% extends "layout.html" %}
 
-{% block head %}
-
-    <title> Log in </title>
-    <link rel="stylesheet" href="../static/css/style_login.css ">
-
-{% endblock %}
+{% block title %}<title>Register</title>{% endblock %}
 
 {% block body %}
 
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+          var messages = {{ messages | safe }};
+          for (var i=0; i<messages.length; i++) {
+            alert(messages[i]);
+          }
+        </script>
+      {% endif %}
+    {% endwith %}
+
     {% if error %}
-            <div class="error">{{ error }}</div>
-        {% endif %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
 
 
-   <div class="card">
-  <div class="card-header">
-    <h3 class="card-title">Register</h3>
-  </div>
+       <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Register</h3>
+      </div>
 
-  <div class="card-body">
-    <form action="#" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" value='{{ value }}'>
-        <br>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" value='{{ value }}'>
-        <br>
-        <label for="password2">Confirm Password</label>
-        <input type="password" name="password2" id="password2" value='{{ value }}'>
-        <br>
-        <button type="submit" class="btn btn-primary btn-block">Register</button>
-    </form>
-  </div>
+      <div class="card-body">
+        <form action="#" method="post">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" value='{{ value }}'>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" value='{{ value }}'>
+            <br>
+            <label for="password2">Confirm Password</label>
+            <input type="password" name="password2" id="password2" value='{{ value }}'>
+            <br>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+      </div>
 
-</div>
+    </div>
 
 {% endblock %}

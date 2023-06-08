@@ -1,6 +1,6 @@
 <!doctype html>
 
-
+<head>{% block title %}{% endblock %}</head>
 
 {% with messages = get_flashed_messages() %}
   {% if messages %}
@@ -13,7 +13,7 @@
   {% endif %}
 {% endwith %}
 <html lang="en">
-<head>{% block head %}{% endblock %}</head>
+
 
 
 

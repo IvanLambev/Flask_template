@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}<title>{{ username }}'s Dashboard</title>{% endblock %}
+<link rel="stylesheet" href="../static/css/style_for_dashboard.css" >
+{% block body %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <script>
+          var messages = {{ messages | safe }};
+          for (var i=0; i<messages.length; i++) {
+            alert(messages[i]);
+          }
+        </script>
+      {% endif %}
+    {% endwith %}
+
+    <h1>Welcome {{ username }}</h1>
+    <h2>Those are the urls you have had scraped</h2>
+     {% for link in scraped_urls %}
+        <a href="{{ link }}">{{ link }}</a>
+        <br>
+    {% endfor %}
+    <br>
+    <h2>Scrape a new url</h2>
+    <a href="{{ url_for('scrape_url') }}">Scrape</a>
+    <br>
+
+
+
+    <a href="/logout">Logout</a>
+
+{% endblock %}

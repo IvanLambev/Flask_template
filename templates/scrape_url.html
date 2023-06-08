@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}<title> Scrape URL</title>{% endblock %}
+
+{% block body %}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <h1>Scrape URL</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    {% if scraped_text %}
+        <p>{{ scraped_text }}</p>
+        <button onclick="window.location.href='/summarize'">Text to long to read? Summarize it here</button>
+    {% endif %}
+    <form action="/scrapeUrl" method="POST">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <label for="url">URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Scrape</button>
+    </form>
+    <script>
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        const csrfInput = document.querySelector('input[name="_csrf_token"]');
+
+        csrfInput.value = csrfToken;
+    </script>
+
+{% endblock %}
